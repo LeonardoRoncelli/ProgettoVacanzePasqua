@@ -29,4 +29,5 @@ public class Dati {
         return "Voto: "+voto+
                 "\nTema: "+tema;
     }
+    public Dati(){}
 }

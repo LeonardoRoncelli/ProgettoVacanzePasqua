@@ -21,4 +21,5 @@ public class Comando {
         setComando(comando);
         setOggetto(oggetto);
     }
+    public Comando(){}
 }

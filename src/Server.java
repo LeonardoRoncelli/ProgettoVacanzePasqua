@@ -31,11 +31,11 @@ public class Server {
                 out.flush();
                 in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
                 Comando fromClient=null;
+                inviaMessaggio(mapper.writeValueAsString(new Comando("3","Sei connesso")));
                 do {
                     try {
                         fromClient = mapper.readValue(in.readLine(), Comando.class);
                         System.out.println("Client >" + fromClient.getComando());
-                        inviaMessaggio(mapper.writeValueAsString(new Comando("3","Sei connesso")));
                         if (fromClient.getComando().equals("0")) {
                             String oggetto=fromClient.getOggetto();
                             Dati dati=mapper.readValue(oggetto,Dati.class);
@@ -56,7 +56,9 @@ public class Server {
                 } while (fromClient!=null && !fromClient.getComando().equals("bye"));
             } catch (IOException ioException) {
                 ioException.printStackTrace();
-            }finally {
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            } finally {
                 try {
                     connessione.close();
                     out.close();
@@ -77,7 +79,7 @@ public class Server {
             }
         }
         public static void main(String args[]) {
-            ArrayList<Dati>listaDati = null;
+            ArrayList<Dati>listaDati = new ArrayList<Dati>();
             Server server = new Server(listaDati);
             while (true) {
                 server.run();
