@@ -5,7 +5,7 @@ public class Comando {
         return comando;
     }
     public void setComando(String comando) throws Exception{
-        if(comando.equals("0")||comando.equals("1")){
+        if(comando.equals("0")||comando.equals("1")||comando.equals("bye")||comando.equals("3")){
             this.comando = comando;
         }else{
             throw new Exception("Comando non valido");
