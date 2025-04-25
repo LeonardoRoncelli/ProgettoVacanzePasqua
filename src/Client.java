@@ -64,6 +64,7 @@ public class Client {
                                 break;
                             }
                             case 2: {
+                                inviaMessaggio(mapper.writeValueAsString(new Comando("bye","")));
                                 System.out.println("Arrivederci");
                                 break;
                             }
