@@ -40,6 +40,7 @@ public class Server {
                             String oggetto=fromClient.getOggetto();
                             Dati dati=mapper.readValue(oggetto,Dati.class);
                             listaDati.add(dati);
+                            scriviSuFile(); // <-- aggiunta
                             inviaMessaggio(mapper.writeValueAsString(new Comando("0","tutto corretto")));
                         }else if (fromClient.getComando().equals("1")) {
                             System.out.println("Server > Inviando lista delle pizze...");
@@ -78,7 +79,17 @@ public class Server {
                 ioException.printStackTrace();
             }
         }
-        public static void main(String args[]) {
+    private void scriviSuFile() {
+        try {
+            File file = new File("votazioni.json");
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, listaDati);
+            System.out.println("Server > Lista votazioni scritta su file.");
+        } catch (IOException e) {
+            System.err.println("Errore nella scrittura su file: " + e.getMessage());
+        }
+    }
+
+    public static void main(String args[]) {
             ArrayList<Dati>listaDati = new ArrayList<Dati>();
             Server server = new Server(listaDati);
             while (true) {
