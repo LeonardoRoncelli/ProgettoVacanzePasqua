@@ -40,7 +40,7 @@ public class Server {
                             String oggetto=fromClient.getOggetto();
                             Dati dati=mapper.readValue(oggetto,Dati.class);
                             listaDati.add(dati);
-                            scriviSuFile(); // <-- aggiunta
+                            scriviSuFile();
                             inviaMessaggio(mapper.writeValueAsString(new Comando("0","tutto corretto")));
                         }else if (fromClient.getComando().equals("1")) {
                             System.out.println("Server > Inviando lista delle pizze...");

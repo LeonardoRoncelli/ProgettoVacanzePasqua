@@ -19,16 +19,14 @@ public class Client {
             try {
                 connessione = new Socket("localhost", 9999);
                 System.out.println("Client > Connessione inviata");
-
                 out = new PrintWriter(connessione.getOutputStream());
                 out.flush();
                 in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
-
                 try {
-                    //CONNESSIONE
+                    //connessione
                     System.out.println("Server >" + mapper.readValue(in.readLine(), Comando.class).getOggetto());
 
-                    //MENU'
+                    //menù
                     int scelta;
                     do {
                         System.out.println(
@@ -38,7 +36,6 @@ public class Client {
                                         "\n2) Chiudi connessione"
                         );
                         scelta = Integer.parseInt(scanner.next());
-
                         switch (scelta) {
                             case 0: {
                                 int voto;
@@ -54,7 +51,6 @@ public class Client {
                                 break;
                             }
                             case 1: {
-
                                 inviaMessaggio(mapper.writeValueAsString(new Comando("1", "")));
                                 Comando comando=mapper.readValue(in.readLine(),Comando.class);
                                 ArrayList<Dati> lista = mapper.readValue(comando.getOggetto(), new TypeReference<ArrayList<Dati>>() {});
@@ -71,7 +67,6 @@ public class Client {
                             default: {
                                 System.err.println("[ERRORE] Opzione non valida, riprova.");
                             }
-
                         }
                     } while (scelta !=2);
                 } catch (Exception classNot) {

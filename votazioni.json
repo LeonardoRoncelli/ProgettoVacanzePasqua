@@ -1,7 +1,4 @@
 [ {
-  "voto" : 5,
-  "tema" : "Argomento2"
-}, {
   "voto" : 3,
   "tema" : "Argomento1"
 } ]
