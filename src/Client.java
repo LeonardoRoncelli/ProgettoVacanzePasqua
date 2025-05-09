@@ -25,7 +25,6 @@ public class Client {
                 try {
                     //connessione
                     System.out.println("Server >" + mapper.readValue(in.readLine(), Comando.class).getOggetto());
-
                     //menù
                     int scelta;
                     do {
