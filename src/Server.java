@@ -43,7 +43,6 @@ public class Server {
                             scriviSuFile();
                             inviaMessaggio(mapper.writeValueAsString(new Comando("0","tutto corretto")));
                         }else if (fromClient.getComando().equals("1")) {
-                            System.out.println("Server > Inviando lista delle pizze...");
                             String oggetto= mapper.writeValueAsString(listaDati);
                             inviaMessaggio(mapper.writeValueAsString(new Comando("1",oggetto)));
                         } else if (fromClient.getComando().equals("bye")) {

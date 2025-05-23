@@ -5,10 +5,13 @@ public class Dati {
         return tema;
     }
     public void setTema(String tema) throws Exception {
-        if(tema.equalsIgnoreCase("Argomento1")||tema.equalsIgnoreCase("Argomento2")||tema.equalsIgnoreCase("Argomento3")) {
-            this.tema = tema;
-        }else {
-            throw new Exception("Tema non disponibile");
+        String[]listaArgomenti={"Argomento1","Argomento2","Argomento3"};
+        for(String a:listaArgomenti){
+            if (a.equalsIgnoreCase("Argomento1")||a.equalsIgnoreCase("Argomento2")||a.equalsIgnoreCase("Argomento3")){
+                this.tema=tema;
+            }else {
+                throw new Exception("Tema non disponibile");
+            }
         }
     }
     public int getVoto() {

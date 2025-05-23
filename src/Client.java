@@ -30,7 +30,7 @@ public class Client {
                     do {
                         System.out.println(
                                 "\nScegli un'opzione:" +
-                                        "\n0) Manda una votazione" +
+                                        "\n0) Manda una votazione e ricevi la lista dei temi disponibili" +
                                         "\n1) Ricevi lista" +
                                         "\n2) Chiudi connessione"
                         );
@@ -39,7 +39,12 @@ public class Client {
                             case 0: {
                                 int voto;
                                 String tema;
-                                System.out.print("Inserisci il voto: ");
+                                String[]temiDisponibili={"Argomento1","Argomento2","Argomento3"};
+                                System.out.println("Temi disponibili: ");
+                                for(int i=0;i<temiDisponibili.length;i++){
+                                    System.out.println("- "+temiDisponibili[i]);
+                                }
+                                System.out.println("Inserisci il voto: ");
                                 voto=scanner.nextInt();
                                 System.out.print("Inserisci il tema: ");
                                 tema=scanner.next();
